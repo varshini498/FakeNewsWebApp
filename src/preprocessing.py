@@ -3,7 +3,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-# Download required NLTK datasets
+# Download once
 nltk.download('stopwords')
 nltk.download('punkt')
 
@@ -11,10 +11,7 @@ STOP_WORDS = set(stopwords.words('english'))
 
 def clean_text(text: str) -> str:
     """
-    Clean input text by:
-    - converting to lowercase
-    - removing non-alphabet characters
-    - removing stopwords
+    Clean text: lowercase, remove non-alphabet, remove stopwords
     """
     text = text.lower()
     text = re.sub(r'[^a-z\s]', '', text)

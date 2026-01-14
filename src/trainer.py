@@ -2,7 +2,7 @@ import pandas as pd
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from preprocessing import clean_text
+from .preprocessing import clean_text
 
 # Load dataset
 df = pd.read_csv("data/fake_news.csv").dropna()
@@ -14,11 +14,11 @@ df["clean_text"] = df["text"].apply(clean_text)
 X = df["clean_text"]
 y = df["label"]
 
-# TF-IDF vectorization
+# TF-IDF Vectorizer
 vectorizer = TfidfVectorizer(max_features=5000)
 X_vec = vectorizer.fit_transform(X)
 
-# Train Logistic Regression model
+# Logistic Regression model
 model = LogisticRegression(max_iter=1000)
 model.fit(X_vec, y)
 
